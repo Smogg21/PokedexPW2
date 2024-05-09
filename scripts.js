@@ -45,7 +45,7 @@ function mostrarPkm(data){
         <small>${data.types[1]?data.types[1].type.name:''}</small> 
         <br>
         <audio autoplay class="audio">
-            <source src="${data.cries.legacy}" type="audio/ogg">
+            <source src="${data.cries.legacy?data.cries.legacy:data.cries.latest}" type="audio/ogg">
         </audio>
         
     </div>
