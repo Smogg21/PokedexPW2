@@ -1,0 +1,20 @@
+body{
+    background-color: rgb(254, 239, 197);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+
+}
+
+.pkmForm{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+table, th, td {
+    border: 1px solid;
+    width: 200px;
+    text-align: center;
+}
