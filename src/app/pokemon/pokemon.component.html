@@ -1,0 +1,35 @@
+@if (pokemon) {
+  <div class="pkmContainer pokemon-details">
+  <h2>{{ pokemon.name | uppercase }}</h2>
+  <div class="img-container">
+      <img src="{{ pokemon.sprites.front_default }}" alt="{{ pokemon.name }}">
+      <img src="{{ pokemon.sprites.back_default }}" alt="{{ pokemon.name }}">
+  </div>
+  <div class="info">
+      <table>
+          <tr>
+              <th>ID</th>
+              <th>Altura</th>
+              <th>Peso</th>
+          </tr>
+          <tr>
+              <td>#{{ pokemon.id }}</td>
+              <td>{{ pokemon.height }} decímetros</td>
+              <td>{{ pokemon.weight }} hectogramos</td>
+          </tr>
+      </table>
+  
+      <h3>Tipo(s)</h3>
+      <small>{{ pokemon.types[0].type.name }}</small>
+      @if ( pokemon.types.length > 1 ) {
+        <small>{{ pokemon.types[1].type.name }}</small>
+      }
+     
+      <br>
+      <audio autoplay class="audio">
+          <source [src]="pokemon.cries.legacy ? pokemon.cries.legacy : pokemon.cries.latest" type="audio/ogg">
+      </audio>
+  </div>
+  </div>
+  
+}

@@ -1,0 +1,8 @@
+<main>
+	<h1>Pokedex</h1>
+	<app-pokemon-search (search)="getPokemon($event)"></app-pokemon-search>
+	<div class="pkmContainer">
+		<!-- Aquí se mostrarán los detalles del Pokémon -->
+		<app-pokemon [pokemon]="pokemon" ></app-pokemon>
+	</div>
+</main>
