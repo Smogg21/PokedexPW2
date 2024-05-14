@@ -1,0 +1,8 @@
+<input type="text"  #pkmNameInput name="pkmName"  [(ngModel)]="selectedName"  (input)="filterPokemonNames($event)" placeholder="Pikachu" id="pkmName">
+<div class="autocomplete-items">
+	@for (name of filteredNames; track name) {
+	  <div (click)="selectPokemon(name)">
+		{{ name }}
+		</div>
+	}
+</div>

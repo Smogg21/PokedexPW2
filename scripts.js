@@ -7,7 +7,6 @@ async function getPkm(pkmName){
     .then((data) => {
         pkmContainer.innerHTML = '';
         mostrarPkm(data);
-        console.log(data);
         const audio = document.querySelector('.audio');
         audio.volume = 0.1;
     })
