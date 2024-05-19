@@ -3,11 +3,12 @@ import { RouterOutlet } from '@angular/router';
 import { PokemonComponent } from './pokemon/pokemon.component';
 import { PokemonSearchComponent } from './pokemon-search/pokemon-search.component';
 import { PokemonService } from './pokemon.service';
+import { AdivinarPokemonComponent } from './adivinar-pokemon/adivinar-pokemon.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, PokemonComponent, PokemonSearchComponent],
+  imports: [RouterOutlet, PokemonComponent, PokemonSearchComponent, AdivinarPokemonComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
