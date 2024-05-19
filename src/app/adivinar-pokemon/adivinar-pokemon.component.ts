@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Renderer2, ViewChild, ElementRef } from '@angular/core';
 import nombresPokemon from '../../nombresPokemon.json';
 import { PokemonService } from '../pokemon.service';
 
@@ -11,16 +11,20 @@ import { PokemonService } from '../pokemon.service';
 })
 export class AdivinarPokemonComponent {
 	@Output() search = new EventEmitter<string>();
+	@ViewChild('pokemonImage') pokemonImage!: ElementRef;
+
 	pokemon: any;
 	listaPokemons : string[] = [];
 	pokemonSeleccionado!: string;
 	opciones: string[] = [];
 	puntaje: number = 0;
 	juegoTerminado: boolean = false;
+	opcionesHabilitadas!: boolean;
+	maxReintentos: number = 3; 
 
-	constructor(private pokemonService: PokemonService) {}
+	constructor(private pokemonService: PokemonService, private renderer: Renderer2) {}
 
-	comenzarJuego() : void {
+	comenzarJuego(reintentos: number = this.maxReintentos) : void {
 		if (this.juegoTerminado) {
 			this.puntaje = 0;
 			this.listaPokemons = [];
@@ -28,11 +32,26 @@ export class AdivinarPokemonComponent {
 		}
 		const nombrePokemon = this.obtenerNombrePokemonAleatorio();
 		this.pokemonSeleccionado = nombrePokemon;
-		this.search.emit(nombrePokemon.toLowerCase().trim());
-		this.pokemonService.getPokemon(nombrePokemon).subscribe(data => {
-			this.pokemon = this.formatearDatosPokemon(data);
-			this.generarOpciones(nombrePokemon);
-		});
+		this.pokemonService.getPokemon(nombrePokemon.toLowerCase().trim()).subscribe(
+			data => {
+				this.pokemon = this.formatearDatosPokemon(data);
+				this.generarOpciones(nombrePokemon);
+				this.opcionesHabilitadas = true;
+
+				if (this.pokemonImage) {
+					this.renderer.addClass(this.pokemonImage.nativeElement, 'pokemon-oculto');
+				}
+			},
+			error => {
+				console.error('Error al obtener los datos de la API:', error);
+				if (reintentos > 0) {
+					console.log(`Reintento restante: ${reintentos - 1}`);
+					this.comenzarJuego();
+				} else {
+					console.error('No se pudo obtener el Pokémon después de varios intentos.');
+				}
+			}
+		);
 	}
 
 	obtenerNombrePokemonAleatorio(pokemonCorrecto: string | null = null) : string {
@@ -61,17 +80,26 @@ export class AdivinarPokemonComponent {
 	}
 
 	elegirRespuesta(opcion: string): void {
-	console.log(this.puntaje);
-		console.log(this.juegoTerminado);
-		if (opcion === this.pokemonSeleccionado) {
-			this.puntaje++;
-			if (this.puntaje >= 5) {
-				this.juegoTerminado = true;
+		if (this.opcionesHabilitadas) {
+			this.opcionesHabilitadas = false;
+			this.renderer.removeClass(this.pokemonImage.nativeElement, 'pokemon-oculto');
+			if (opcion === this.pokemonSeleccionado) {
+				this.puntaje++;
+				if (this.puntaje >= 5) {
+					this.esperarUnSegundo(() => {
+						this.juegoTerminado = true;
+						this.pokemon = null;
+					});	
+				} else {
+					this.esperarUnSegundo(() => this.comenzarJuego());	
+				}
 			} else {
-				this.comenzarJuego();
+				this.esperarUnSegundo(() => this.comenzarJuego());	
 			}
-		} else {
-			this.comenzarJuego();
 		}
+	}
+
+	esperarUnSegundo(func: Function) : void {
+		setTimeout(func, 1000)
 	}
 }

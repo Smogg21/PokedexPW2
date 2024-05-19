@@ -2,7 +2,7 @@
 	@if (pokemon) {
 		<h1>¿QUIÉN ES ESTE POKEMÓN?</h1>
 		<div>
-			<img id="pokemon-oculto" class="pokemon-oculto" src= "{{ pokemon.src }}" alt = "{{ pokemon.alt }}" />
+			<img #pokemonImage id="pokemon-oculto" class="pokemon-oculto" src= "{{ pokemon.src }}" alt = "{{ pokemon.alt }}" />
 		</div>
 		<div>
 			@for (opcion of opciones; track opcion) {
@@ -11,6 +11,7 @@
 		</div>
 	} @else if (juegoTerminado) {
 		<div>
+			<h1>¡HAS GANADO, FELICITACIONES!</h1>
 			<button class="boton-jugar" (click)="comenzarJuego()" >VOLVER A JUGAR</button>
 		</div>
 	} @else {
