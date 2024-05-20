@@ -21,19 +21,25 @@ export class AdivinarPokemonComponent {
 	juegoTerminado: boolean = false;
 	opcionesHabilitadas!: boolean;
 	maxReintentos: number = 3; 
+	tiempo: number = 30;
+	intervalo: any;
 
 	constructor(private pokemonService: PokemonService, private renderer: Renderer2) {}
 
-	comenzarJuego(reintentos: number = this.maxReintentos) : void {
+	comenzarJuego(iniciarTimer: boolean = false, reintentos: number = this.maxReintentos) : void {
 		if (this.juegoTerminado) {
 			this.puntaje = 0;
 			this.listaPokemons = [];
 			this.juegoTerminado = false;
+			this.tiempo = 30;
 		}
 		const nombrePokemon = this.obtenerNombrePokemonAleatorio();
 		this.pokemonSeleccionado = nombrePokemon;
 		this.pokemonService.getPokemon(nombrePokemon.toLowerCase().trim()).subscribe(
 			data => {
+				if (iniciarTimer) {
+					this.comenzarTimer();
+				}
 				this.pokemon = this.formatearDatosPokemon(data);
 				this.generarOpciones(nombrePokemon);
 				this.opcionesHabilitadas = true;
@@ -85,21 +91,37 @@ export class AdivinarPokemonComponent {
 			this.renderer.removeClass(this.pokemonImage.nativeElement, 'pokemon-oculto');
 			if (opcion === this.pokemonSeleccionado) {
 				this.puntaje++;
-				if (this.puntaje >= 5) {
-					this.esperarUnSegundo(() => {
-						this.juegoTerminado = true;
-						this.pokemon = null;
-					});	
-				} else {
-					this.esperarUnSegundo(() => this.comenzarJuego());	
-				}
+				this.esperarUnSegundo(() => {
+					if (this.tiempo > 0) {
+						this.comenzarJuego()
+					}	
+				});	
 			} else {
-				this.esperarUnSegundo(() => this.comenzarJuego());	
+				this.esperarUnSegundo(() => {
+					if (this.tiempo > 0) {
+						this.comenzarJuego()
+					}	
+				});
 			}
 		}
 	}
 
 	esperarUnSegundo(func: Function) : void {
 		setTimeout(func, 1000)
+	}
+
+	comenzarTimer() {
+		this.intervalo = setInterval(() => {
+			this.tiempo--;
+			if (this.tiempo === 0) {
+				this.detenerTimer();
+				this.juegoTerminado = true;
+				this.pokemon = null;
+			}
+		}, 1000);
+	}
+
+  	detenerTimer() {
+		clearInterval(this.intervalo);
 	}
 }

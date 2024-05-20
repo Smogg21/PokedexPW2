@@ -1,6 +1,8 @@
 <div class="adivinar-pokemon-cont">
 	@if (pokemon) {
 		<h1>¿QUIÉN ES ESTE POKEMÓN?</h1>
+		<h2>{{ tiempo }} </h2>
+		<p>Puntaje: {{ puntaje }}</p>
 		<div>
 			<img #pokemonImage id="pokemon-oculto" class="pokemon-oculto" src= "{{ pokemon.src }}" alt = "{{ pokemon.alt }}" />
 		</div>
@@ -11,12 +13,12 @@
 		</div>
 	} @else if (juegoTerminado) {
 		<div>
-			<h1>¡HAS GANADO, FELICITACIONES!</h1>
-			<button class="boton-jugar" (click)="comenzarJuego()" >VOLVER A JUGAR</button>
+			<h1>¡HAS ACERTADO {{ puntaje }}, FELICITACIONES!</h1>
+			<button class="boton-jugar" (click)="comenzarJuego(true)" >VOLVER A JUGAR</button>
 		</div>
 	} @else {
 		<div>
-			<button class="boton-jugar" (click)="comenzarJuego()" >JUGAR</button>
+			<button class="boton-jugar" (click)="comenzarJuego(true)" >JUGAR</button>
 		</div>
 	}
 </div>
