@@ -17,7 +17,10 @@ export class PokemonComponent implements AfterViewInit  {
 
 	playAudio(): void {
 		if (this.audioElement && this.audioElement.nativeElement) {
+			const audio : any = document.querySelector('.audio');
+        	audio.volume = 0.1;
 			this.audioElement.nativeElement.play();
+
 		}
 	}
 
