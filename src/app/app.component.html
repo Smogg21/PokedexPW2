@@ -3,7 +3,7 @@
 	<app-pokemon-search (search)="getPokemon($event)"></app-pokemon-search>
 	<div class="pkmContainer">
 		<!-- Aquí se mostrarán los detalles del Pokémon -->
-		<app-pokemon  ></app-pokemon>
+		<app-pokemon  [pokemon]="pokemon"></app-pokemon>
 	</div>
 	<app-adivinar-pokemon></app-adivinar-pokemon>
 </main>
