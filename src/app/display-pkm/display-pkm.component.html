@@ -1,0 +1,11 @@
+
+<main>
+    <h1>Pokedex</h1>
+    <form (ngSubmit)="buscarPkmn(pkmName)">
+        <label for="name">Name:</label>
+        <input type="text" id="pkmName" name="pkmName" [(ngModel)]="pkmName" required placeholder="Enter Pokemon name">
+        <button type="submit">Buscar</button>
+      </form>
+      <div class="pkmContainer"></div>
+      <div class="pkmContainer"></div>
+</main>
