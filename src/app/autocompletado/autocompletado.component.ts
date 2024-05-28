@@ -38,16 +38,12 @@ export class AutocompletadoComponent {
 
 	onInputBlur(): void {
 		setTimeout(() => {
-			this.filteredNames = [];
+			this.clearFilteredNames();
 		}, 200);
 	}
 
 	clearFilteredNames(): void {
 		this.filteredNames = [];
-	}
-
-	clearSuggestions(): void {
-		this.clearFilteredNames();
 	}
 
 	private emitPokemonName(): void {
