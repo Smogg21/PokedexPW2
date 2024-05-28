@@ -7,8 +7,8 @@
 			<img #pokemonImage id="pokemon-oculto" class="pokemon-oculto" src= "{{ pokemon.src }}" alt = "{{ pokemon.alt }}" />
 		</div>
 		<div>
-			@for (opcion of opciones; track opcion) {
-				<button class="opcion" id="opcion1" (click)="elegirRespuesta(opcion)"> {{ opcion }} </button>
+			@for (opcion of opciones; track opcion; let index = $index) {
+				<button class="opcion" id="opcion{{index}}" (click)="elegirRespuesta(opcion)"> {{ opcion }} </button>
 			}
 		</div>
 	} @else if (juegoTerminado) {

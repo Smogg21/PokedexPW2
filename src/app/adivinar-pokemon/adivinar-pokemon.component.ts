@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, Renderer2, ViewChild, ElementRef } from '@angular/core';
+import { Component, Renderer2, ViewChild, ElementRef } from '@angular/core';
 import nombresPokemon from '../../nombresPokemon.json';
 import { PokemonService } from '../pokemon.service';
 
@@ -10,7 +10,6 @@ import { PokemonService } from '../pokemon.service';
   styleUrl: './adivinar-pokemon.component.css'
 })
 export class AdivinarPokemonComponent {
-	@Output() search = new EventEmitter<string>();
 	@ViewChild('pokemonImage') pokemonImage!: ElementRef;
 
 	pokemon: any;
