@@ -11,8 +11,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class AutocompletadoComponent {
 
-	@Input() pokemonName: any;
-
+	pokemonName: any;
 	pokemonList: string[] = nombresPokemon;
 	filteredNames: string[] = [];
 	selectedName: string = '';
