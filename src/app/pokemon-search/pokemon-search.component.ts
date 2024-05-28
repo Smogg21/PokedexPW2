@@ -11,7 +11,6 @@ import { AutocompletadoComponent } from '../autocompletado/autocompletado.compon
 })
 export class PokemonSearchComponent {
 	@Output() search = new EventEmitter<string>();
-	@ViewChild(AutocompletadoComponent) autocomplete!: AutocompletadoComponent;
   	pokemonName: any = '';
 
   	constructor() {}
@@ -24,8 +23,5 @@ export class PokemonSearchComponent {
     	if (this.pokemonName.trim()) {
       		this.search.emit(this.pokemonName.trim());
     	}
-		if (this.autocomplete) {
-			this.autocomplete.clearSuggestions();
-		}
   	}
 }
