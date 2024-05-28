@@ -5,18 +5,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokedex</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="fontawesome-free-6.5.2-web/css/all.min.css">
     <script type="module" src="scripts.js"></script>
 </head>
 <body>
     <main>
-        <h1>Pokedex</h1>
-        <form class="pkmForm">
+        <div class="btnFilter" id="btnFilter">
+            <button><i class="fa-solid fa-filter"></i></button>
+        </div>
+        <div class="sidebar_filter" id="sidebar">
+            <i class="fa-solid fa-xmark" id="btnClose"></i>
+            <div class="filter_text">
+                <p>Tipos: </p><select name="pkmnType" class="pkmnType">
+                    <option value="Bicho">Bicho</option>
+                    <option value="Dragón">Dragón</option>
+                    <option value="Hada">Hada</option>
+                    <option value="Fuego">Fuego</option>
+                    <option value="Fantasma">Fantasma</option>
+                    <option value="Tierra">Tierra</option>
+                    <option value="Normal">Normal</option>
+                    <option value="Psíquico">Psíquico</option>
+                    <option value="Acero">Acero</option>
+                    <option value="Siniestro">Siniestro</option>
+                    <option value="Eléctrico">Eléctrico</option>
+                    <option value="Lucha">Lucha</option>
+                    <option value="Volador">Volador</option>
+                    <option value="Planta">Planta</option>
+                    <option value="Hielo">Hielo</option>
+                    <option value="Veneno">Veneno</option>
+                    <option value="Roca">Roca</option>
+                    <option value="Agua">Agua</option>
+                </select>
+                <p>Debilidades: </p><select name="pkmnWeak" class="pkmnWeak">
+                    <option value="wBicho">Bicho</option>
+                    <option value="wDragón">Dragón</option>
+                    <option value="wHada">Hada</option>
+                    <option value="wFuego">Fuego</option>
+                    <option value="wFantasma">Fantasma</option>
+                    <option value="wTierra">Tierra</option>
+                    <option value="wNormal">Normal</option>
+                    <option value="wPsíquico">Psíquico</option>
+                    <option value="wAcero">Acero</option>
+                    <option value="wSiniestro">Siniestro</option>
+                    <option value="wEléctrico">Eléctrico</option>
+                    <option value="wLucha">Lucha</option>
+                    <option value="wVolador">Volador</option>
+                    <option value="wPlanta">Planta</option>
+                    <option value="wHielo">Hielo</option>
+                    <option value="wVeneno">Veneno</option>
+                    <option value="wRoca">Roca</option>
+                    <option value="wAgua">Agua</option>
+                </select>
+                <p>Generación: </p><select name="pkmnGen" class="pkmnGen">
+                    <option value="primera">1</option>
+                    <option value="segunda">2</option>
+                    <option value="tercera">3</option>
+                    <option value="cuarta">4</option>
+                    <option value="quinta">5</option>
+                    <option value="sexta">6</option>
+                    <option value="septima">7</option>
+                    <option value="octava">8</option>
+                    <option value="novena">9</option>
+                </select>
+            </div>
+        </div>
+        <div class="navbar">
+            <div class="searchbar">
+                <form class="pkmForm">
+                        <!--<label for="pkmName">Nombre del pokémon</label>-->
+                        <div class="input_box">
+                        <input type="text" name="pkmName" placeholder="Pikachu..." id="pkmName">
+                        <button class="search" type="submit" value="Buscar" id="search"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <!--<form class="pkmForm">
             <label for="pkmName">Nombre del pokemon</label>
             <input type="text" name="pkmName" placeholder="Pikachu" id="pkmName">
-            <input type="submit" value="Buscar" id="search"> 
-        </form>
-        <div class="pkmContainer">
-        </div>
+            <input type="submit" value="Buscar" id="search">
+        </form>-->
         <div class="pkmContainer"></div>
     </main>
 </body>

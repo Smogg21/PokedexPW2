@@ -67,3 +67,16 @@ function capitalizeFirstLetter(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
 
+
+//Sidebar
+
+const btnOpen = document.getElementById("btnFilter");
+const btnClose = document.getElementById("btnClose");
+
+btnOpen.addEventListener('click', function(){
+	document.getElementById("sidebar").style.width = "300px";
+})
+
+btnClose.addEventListener('click', function(){
+	document.getElementById("sidebar").style.width = "0";
+})
