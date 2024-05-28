@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, ViewChild, ElementRef, AfterViewInit  } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef, AfterViewInit, OnInit  } from '@angular/core';
 
 @Component({
 	selector: 'app-pokemon',
@@ -9,27 +9,21 @@ import { Component, Input, ViewChild, ElementRef, AfterViewInit  } from '@angula
 	imports: [CommonModule]
 })
 
-export class PokemonComponent implements AfterViewInit  {
+export class PokemonComponent {
 	@Input() pokemon: any;
 	@ViewChild('audioElement') audioElement!: ElementRef<HTMLAudioElement>;
 
 	constructor() {}
 
 	playAudio(): void {
-		if (this.audioElement && this.audioElement.nativeElement) {
+		if (this.audioElement) {
         	this.audioElement.nativeElement.volume = 0.1;
 			this.audioElement.nativeElement.play();
 		}
 	}
 
-	ngAfterViewInit(): void {
-		if (this.pokemon && this.audioElement) {
-			this.audioElement.nativeElement.play();
-		}
-	}
-
 	ngOnChanges(): void {
-		if (this.audioElement && this.audioElement.nativeElement) {
+		if (this.audioElement) {
 			this.audioElement.nativeElement.load();
 			this.playAudio();
 		}
