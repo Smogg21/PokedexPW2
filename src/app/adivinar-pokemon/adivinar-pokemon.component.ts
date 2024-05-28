@@ -20,22 +20,21 @@ export class AdivinarPokemonComponent {
 	puntaje: number = 0;
 	juegoTerminado: boolean = false;
 	opcionesHabilitadas!: boolean;
-	maxReintentos: number = 3; 
 	tiempo: number = 30;
 	intervalo: any;
 
 	constructor(private pokemonService: PokemonService, private renderer: Renderer2) {}
 
-	comenzarJuego(iniciarTimer: boolean = false, reintentos: number = this.maxReintentos) : void {
-		if (this.juegoTerminado) {
+	comenzarJuego(iniciarTimer: boolean = false) : void {
+		if (this.juegoTerminado) {  //resetea el juego si el juego terminó
 			this.puntaje = 0;
 			this.listaPokemons = [];
 			this.juegoTerminado = false;
 			this.tiempo = 30;
 		}
-		const nombrePokemon = this.obtenerNombrePokemonAleatorio();
+		const nombrePokemon = this.obtenerNombrePokemonAleatorio(); //obtiene el pokemon a adivinar
 		this.pokemonSeleccionado = nombrePokemon;
-		this.pokemonService.getPokemon(nombrePokemon.toLowerCase().trim()).subscribe(
+		this.pokemonService.getPokemon(nombrePokemon.toLowerCase().trim()).subscribe( //se hace el fetch nuevamente para obtener la data del pokemon
 			data => {
 				if (iniciarTimer) {
 					this.comenzarTimer();
@@ -50,18 +49,12 @@ export class AdivinarPokemonComponent {
 			},
 			error => {
 				console.error('Error al obtener los datos de la API:', error);
-				if (reintentos > 0) {
-					console.log(`Reintento restante: ${reintentos - 1}`);
-					this.comenzarJuego();
-				} else {
-					console.error('No se pudo obtener el Pokémon después de varios intentos.');
-				}
 			}
 		);
 	}
 
 	obtenerNombrePokemonAleatorio(pokemonCorrecto: string | null = null) : string {
-		let pokemonesDisponibles : string[] = nombresPokemon.filter(pokemon => !this.listaPokemons.includes(pokemon))
+		let pokemonesDisponibles : string[] = nombresPokemon.filter(pokemon => !this.listaPokemons.includes(pokemon)) // filtra primero pokemones ya utilizados
 		if (pokemonCorrecto) {
 			pokemonesDisponibles = pokemonesDisponibles.filter(pokemon => pokemon !== pokemonCorrecto);
 		}
@@ -82,7 +75,7 @@ export class AdivinarPokemonComponent {
 		this.opciones.push(this.obtenerNombrePokemonAleatorio(pokemonCorrecto));
 		this.opciones.push(this.obtenerNombrePokemonAleatorio(pokemonCorrecto));
 		this.opciones.push(pokemonCorrecto);
-		return this.opciones.sort(() => Math.random() - 0.5);
+		return this.opciones.sort(() => Math.random() - 0.5); //sort requiere un valor negativo, positivo o cero.
 	}
 
 	elegirRespuesta(opcion: string): void {
