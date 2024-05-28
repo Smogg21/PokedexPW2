@@ -7,11 +7,7 @@ body{
     width: 100%;
 }
 
-.pkmForm{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
+
 
 table, th, td {
     border: 1px solid;
