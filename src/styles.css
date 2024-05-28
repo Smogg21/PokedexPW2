@@ -1,20 +1,197 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body{
-    background-color: rgb(254, 239, 197);
+    height: 90vh;
+    background-image: url('./assets/images/pkmnbg.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: center; */
+    justify-content: center;
     width: 100%;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar{
+    z-index: 100;
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    background: white;
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.518);
+}
+
+.searchbar{
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 38%;
+}
+
+.sidebar_filter{
+    height: 100%;
+    width: 0; /*cambiar con js*/
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    background-image: url('./assets/images/filter.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    transition: 0.5s;
+    padding-top: 10%;
+    overflow-x: hidden;
+    box-shadow: 0px 20px 50px black;
+}
+
+.btnFilter{
+    position: fixed;
+    left: 2%;
+    top: 15%;
+}
+
+.btnFilter button{
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 50%;
+}
+
+.btnFilter button i{
+    font-size: 32px;
+    background-color: #fff;
+    color: rgb(10, 10, 35);
+    padding: 10px;
+    border-radius: 10%;
+}
+
+.filter_text{
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    padding-left: 5%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.filter_text select{
+    position: relative;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.sidebar_filter i{
+    position: absolute;
+    color: #fff;
+    font-size: 36px;
+    right: 5%;
+    justify-content: left;
+    cursor: pointer;
+}
+
+.sidebar_filter i:hover{
+    color: rgb(162, 163, 163);
 }
 
 .pkmForm{
     display: flex;
     flex-direction: column;
     gap: 10px;
+    border-radius: 25px;
+    position: relative; 
+}
+
+label{
+    font-weight: bolder;
+    font-size: larger;
+    color: rgb(rgb(55, 55, 55), green, blue);
+    padding: 7px;
+}
+
+input{
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 25px;
+    font-size: 16px;
+    margin: 30px 0px 20px 0;
+    padding: 4px 5px 4px 10px;
+    border: none;
+    box-shadow: 0 4px 7px 2px rgba(0, 0, 0, 0.433);
+}
+
+input:focus{
+    outline: none;
+}
+
+button.search{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 115%;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 18px;
+}
+
+button i{
+    color: rgb(93, 94, 95);
+}
+
+button:hover i{
+    color: rgb(162, 163, 163);
+}
+
+.pkmContainer{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    align-items: center;
+    width: 100%;
+	padding-top: 100px;
 }
 
 table, th, td {
     border: 1px solid;
     width: 200px;
     text-align: center;
+}
+
+/*responsive*/
+
+@media screen and (max-width: 1000px){
+    body{
+        background-position-x: center;
+    }
+
+    .btnFilter{
+        position: fixed;
+        left: 2%;
+        top: 20%;
+    }
+
+    .sidebar_filter i{
+        position: absolute;
+        color: #fff;
+        font-size: 36px;
+        top: 5%;
+        right: 5%;
+        justify-content: left;
+        cursor: pointer;
+    }
+
+    .sidebar_filter{
+        top: 15%;
+    }
+
 }

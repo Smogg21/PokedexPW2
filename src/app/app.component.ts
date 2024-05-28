@@ -4,11 +4,12 @@ import { PokemonComponent } from './pokemon/pokemon.component';
 import { PokemonSearchComponent } from './pokemon-search/pokemon-search.component';
 import { PokemonService } from './pokemon.service';
 import { AdivinarPokemonComponent } from './adivinar-pokemon/adivinar-pokemon.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, PokemonComponent, PokemonSearchComponent, AdivinarPokemonComponent],
+  imports: [RouterOutlet, PokemonComponent, PokemonSearchComponent, AdivinarPokemonComponent, SidebarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

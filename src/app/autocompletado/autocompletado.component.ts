@@ -24,9 +24,10 @@ export class AutocompletadoComponent {
 		const inputElement = event.target as HTMLInputElement;
 		const inputValue = inputElement.value.toLowerCase().trim();
 		this.pokemonName = inputValue;
-		this.filteredNames = this.pokemonList.filter(name =>
-			name.toLowerCase().includes(inputValue.toLowerCase())
-		);
+		this.filteredNames = this.pokemonList.filter(name => {
+			const matchExp = new RegExp("^" + inputValue.toLowerCase());
+			return 	matchExp.test(name.toLowerCase());
+		});
 		this.emitPokemonName(); 
 	}
 

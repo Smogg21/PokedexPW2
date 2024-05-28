@@ -1,9 +1,9 @@
-<div class="adivinar-pokemon-cont">
+<div class="adivinar-pokemon-cont container-flex">
 	@if (pokemon) {
 		<h1>¿QUIÉN ES ESTE POKEMÓN?</h1>
 		<h2>{{ tiempo }} </h2>
 		<p>Puntaje: {{ puntaje }}</p>
-		<div>
+		<div class="pokemon-img-container container-flex">
 			<img #pokemonImage id="pokemon-oculto" class="pokemon-oculto" src= "{{ pokemon.src }}" alt = "{{ pokemon.alt }}" />
 		</div>
 		<div>
@@ -12,12 +12,18 @@
 			}
 		</div>
 	} @else if (juegoTerminado) {
-		<div>
-			<h1>¡HAS ACERTADO {{ puntaje }}, FELICITACIONES!</h1>
+		<div class="container-flex">
+			@if (puntaje < 3) {
+				<h1>TU PUNTAJE FUE {{ puntaje }}, ¿INTENTAS NUEVAMENTE?</h1>
+			} @else if (puntaje >= 3 && puntaje < 8) {
+				<h1>¡HAS ACERTADO {{ puntaje }}, BIEN HECHO!</h1>
+			} @else {
+				<h1>¡WOW, HAS ACERTADO {{ puntaje }}, FELICITACIONES!</h1>
+			}
 			<button class="boton-jugar" (click)="comenzarJuego(true)" >VOLVER A JUGAR</button>
-		</div>
+		</div >
 	} @else {
-		<div>
+		<div class="container-flex">
 			<button class="boton-jugar" (click)="comenzarJuego(true)" >JUGAR</button>
 		</div>
 	}

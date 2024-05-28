@@ -1,3 +1,32 @@
 .pokemon-oculto {
 	filter: brightness(0.0);
 }
+
+.adivinar-pokemon-cont{
+	margin: 30px 0;
+}
+
+.pokemon-img-container {
+	width: 300px;
+	height: 300px;
+}
+
+#pokemon-oculto {
+	width: auto;
+	height: 100%;
+}
+
+.container-flex{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.boton-jugar {
+	margin: 30px 0;
+}
+
+.opcion {
+	margin: 0 10px;
+}

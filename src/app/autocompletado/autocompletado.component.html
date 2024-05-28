@@ -1,4 +1,5 @@
-<input type="text"  #pkmNameInput name="pkmName"  [(ngModel)]="selectedName"  (input)="filterPokemonNames($event)" placeholder="Pikachu" id="pkmName">
+<input type="text" autocomplete="off"  #pkmNameInput name="pkmName" placeholder="Pikachu"  id="search" [(ngModel)]="selectedName"  (input)="filterPokemonNames($event)" placeholder="Pikachu" id="pkmName">
+<button class="search" type="submit" value="Buscar" id="search"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></button>
 <div class="autocomplete-items">
 	@for (name of filteredNames; track name) {
 	  <div (click)="selectPokemon(name)">

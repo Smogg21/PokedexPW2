@@ -1,5 +1,4 @@
 <form class="pkmForm" (submit)="onSubmit()">
-	<label for="pkmName">Nombre del Pokémon</label>
-		<app-autocompletado [pokemonName]="pokemonName"  (pokemonSelected)="onPokemonSelected($event)" ></app-autocompletado>
-		<input type="submit" value="Buscar" id="search" (click)="autocomplete.clearSuggestions()" > 
+	<div class="input_box"></div>
+	<app-autocompletado [pokemonName]="pokemonName"  (pokemonSelected)="onPokemonSelected($event)" ></app-autocompletado>
 </form>
