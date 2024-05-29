@@ -10,9 +10,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './autocompletado.component.css'
 })
 export class AutocompletadoComponent {
-
-	@Input() pokemonName: any;
-
+	pokemonName: any;
 	pokemonList: string[] = nombresPokemon;
 	filteredNames: string[] = [];
 	selectedName: string = '';
@@ -40,7 +38,7 @@ export class AutocompletadoComponent {
 
 	onInputBlur(): void {
 		setTimeout(() => {
-			this.filteredNames = [];
+			this.clearFilteredNames();
 		}, 200);
 	}
 
@@ -48,9 +46,6 @@ export class AutocompletadoComponent {
 		this.filteredNames = [];
 	}
 
-	clearSuggestions(): void {
-		this.clearFilteredNames();
-	}
 
 	private emitPokemonName(): void {
 		this.pokemonSelected.emit(this.pokemonName);
