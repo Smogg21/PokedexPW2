@@ -9,7 +9,7 @@ import { Component, Input, ViewChild, ElementRef, AfterViewInit  } from '@angula
 	imports: [CommonModule]
 })
 
-export class PokemonComponent implements AfterViewInit  {
+export class PokemonComponent{
 	@Input() pokemon: any;
 	@ViewChild('audioElement') audioElement!: ElementRef<HTMLAudioElement>;
 
@@ -18,12 +18,6 @@ export class PokemonComponent implements AfterViewInit  {
 	playAudio(): void {
 		if (this.audioElement && this.audioElement.nativeElement) {
         	this.audioElement.nativeElement.volume = 0.1;
-			this.audioElement.nativeElement.play();
-		}
-	}
-
-	ngAfterViewInit(): void {
-		if (this.pokemon && this.audioElement) {
 			this.audioElement.nativeElement.play();
 		}
 	}
