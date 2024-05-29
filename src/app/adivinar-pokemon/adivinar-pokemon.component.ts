@@ -10,7 +10,6 @@ import { PokemonService } from '../pokemon.service';
   styleUrl: './adivinar-pokemon.component.css'
 })
 export class AdivinarPokemonComponent {
-	@Output() search = new EventEmitter<string>();
 	@ViewChild('pokemonImage') pokemonImage!: ElementRef;
 
 	pokemon: any;
@@ -20,13 +19,12 @@ export class AdivinarPokemonComponent {
 	puntaje: number = 0;
 	juegoTerminado: boolean = false;
 	opcionesHabilitadas!: boolean;
-	maxReintentos: number = 3; 
 	tiempo: number = 30;
 	intervalo: any;
 
 	constructor(private pokemonService: PokemonService, private renderer: Renderer2) {}
 
-	comenzarJuego(iniciarTimer: boolean = false, reintentos: number = this.maxReintentos) : void {
+	comenzarJuego(iniciarTimer: boolean = false) : void {
 		if (this.juegoTerminado) {
 			this.puntaje = 0;
 			this.listaPokemons = [];
@@ -50,12 +48,6 @@ export class AdivinarPokemonComponent {
 			},
 			error => {
 				console.error('Error al obtener los datos de la API:', error);
-				if (reintentos > 0) {
-					console.log(`Reintento restante: ${reintentos - 1}`);
-					this.comenzarJuego();
-				} else {
-					console.error('No se pudo obtener el Pokémon después de varios intentos.');
-				}
 			}
 		);
 	}
