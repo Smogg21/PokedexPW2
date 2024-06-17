@@ -210,4 +210,26 @@ export class PokemonService {
 	onWeaknessSelected(): Observable<number> {
 		return this.weaknessSelectedSubject.asObservable();
 	}
+
+	getPokemonsByWeakness(weakness: number): Observable<string[]> {
+		return this.http.get<any>(`${this.apiUrl}/type/${weakness}`).pipe(
+			switchMap(weaknessResponse => {
+				const weaknessTypes = weaknessResponse.damage_relations.double_damage_from.map((type: any) => type.name);
+
+				const weaknessRequests: Observable<any>[] = weaknessTypes.map((typeName: string) =>
+					this.http.get<any>(`${this.apiUrl}/type/${typeName}`)
+				);
+
+				return forkJoin(weaknessRequests).pipe(
+					map((weaknessResponses: any[]) => {
+						const pokemonsNotAllowed = [].concat(
+							...weaknessResponses.map((response: any) => response.pokemon.map((p: any) => p.pokemon.name))
+						);
+
+						return pokemonsNotAllowed;
+					})
+				);
+			})
+		);
+  	}
 }

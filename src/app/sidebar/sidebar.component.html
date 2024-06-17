@@ -11,7 +11,7 @@
 				}
 			</select>
 			<p>Debilidades: </p>
-			<select name="pkmnWeak" class="pkmnWeak">
+			<select name="pkmnWeak" class="pkmnWeak" (change)="onWeaknessChange($event)">
 				@for (type of pokemonTypesWeak; track type;) {
 					<option value={{type.id}} [selected]="type.id === -1" >{{type.name}}</option>
 				}

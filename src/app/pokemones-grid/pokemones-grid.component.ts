@@ -48,7 +48,12 @@ export class PokemonesGridComponent implements OnInit {
 
 	fetchPokemons(): void {
 		this.loading = true;
-		this.pokemons = []; // Clear the current list before fetching new data
+		this.pokemons = [];
+		if (this.weakness !== -1) {
+			this.fetchPokemonsByWeakness();
+			return;
+		}
+
 		for (let i = this.offset; i <= this.offset + this.limit; i++) {
 			this.pokemonService.getSinglePokemon(i.toString(), this.generation).subscribe(pokemon => {
 				this.pokemons.push(pokemon);
@@ -110,8 +115,35 @@ export class PokemonesGridComponent implements OnInit {
 	fetchPokemonsBasedOnFilters(): void {
 		if (this.type !== -1) {
 			this.fetchPokemonsByType();
+		}  else if (this.weakness !== -1) {
+			this.fetchPokemonsByWeakness();
 		} else {
 			this.fetchPokemons();
 		}	
+	}
+
+	fetchPokemonsByWeakness(): void {
+		this.loading = true;
+		this.pokemonService.getPokemonsByWeakness(this.weakness).subscribe(pokemonsNotAllowed => {
+			this.pokemons = []; 
+
+			const fetchNextPokemon = (currentOffset: number) => {
+				if (this.pokemons.length > this.limit) {
+					this.loading = false;
+					return;
+				}
+
+				this.pokemonService.getSinglePokemon(currentOffset.toString(), this.generation).subscribe(pokemon => {
+					if (!pokemonsNotAllowed.includes(pokemon.name)) {
+						this.pokemons.push(pokemon);
+						this.pokemons = this.pokemons.sort((first, second) => first.id - second.id);
+					}
+
+					fetchNextPokemon(currentOffset + 1);
+				});
+			};
+
+			fetchNextPokemon(this.offset);
+		});
 	}
 }
