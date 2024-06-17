@@ -4,56 +4,23 @@
 	<div class="sidebar_filter ocultar-sidebar mostrar-sidebar" #sidebar id="sidebar">
 		<i class="fa-solid fa-xmark" id="btnClose" (click)="closeSidebar()"></i>
 		<div class="filter_text">
-			<p>Tipos: </p><select name="pkmnType" class="pkmnType">
-				<option value="Bicho">Bicho</option>
-				<option value="Dragón">Dragón</option>
-				<option value="Hada">Hada</option>
-				<option value="Fuego">Fuego</option>
-				<option value="Fantasma">Fantasma</option>
-				<option value="Tierra">Tierra</option>
-				<option value="Normal">Normal</option>
-				<option value="Psíquico">Psíquico</option>
-				<option value="Acero">Acero</option>
-				<option value="Siniestro">Siniestro</option>
-				<option value="Eléctrico">Eléctrico</option>
-				<option value="Lucha">Lucha</option>
-				<option value="Volador">Volador</option>
-				<option value="Planta">Planta</option>
-				<option value="Hielo">Hielo</option>
-				<option value="Veneno">Veneno</option>
-				<option value="Roca">Roca</option>
-				<option value="Agua">Agua</option>
+			<p>Tipos: </p>
+			<select name="pkmnType" class="pkmnType" (change)="onTypeChange($event)">
+				@for (type of pokemonTypes; track type;) {
+					<option value={{type.id}} [selected]="type.id === -1" >{{type.name}}</option>
+				}
 			</select>
-			<p>Debilidades: </p><select name="pkmnWeak" class="pkmnWeak">
-				<option value="wBicho">Bicho</option>
-				<option value="wDragón">Dragón</option>
-				<option value="wHada">Hada</option>
-				<option value="wFuego">Fuego</option>
-				<option value="wFantasma">Fantasma</option>
-				<option value="wTierra">Tierra</option>
-				<option value="wNormal">Normal</option>
-				<option value="wPsíquico">Psíquico</option>
-				<option value="wAcero">Acero</option>
-				<option value="wSiniestro">Siniestro</option>
-				<option value="wEléctrico">Eléctrico</option>
-				<option value="wLucha">Lucha</option>
-				<option value="wVolador">Volador</option>
-				<option value="wPlanta">Planta</option>
-				<option value="wHielo">Hielo</option>
-				<option value="wVeneno">Veneno</option>
-				<option value="wRoca">Roca</option>
-				<option value="wAgua">Agua</option>
+			<p>Debilidades: </p>
+			<select name="pkmnWeak" class="pkmnWeak">
+				@for (type of pokemonTypesWeak; track type;) {
+					<option value={{type.id}} [selected]="type.id === -1" >{{type.name}}</option>
+				}
 			</select>
-			<p>Generación: </p><select name="pkmnGen" class="pkmnGen">
-				<option value="primera">1</option>
-				<option value="segunda">2</option>
-				<option value="tercera">3</option>
-				<option value="cuarta">4</option>
-				<option value="quinta">5</option>
-				<option value="sexta">6</option>
-				<option value="septima">7</option>
-				<option value="octava">8</option>
-				<option value="novena">9</option>
+			<p>Generación: </p>
+			<select name="pkmnGeneration" class="pkmnType" (change)="onGenerationChange($event)">
+				@for (generation of spriteGenerations; track generation;) {
+					<option value={{generation.value}} [selected]="generation.id === 'NA'" >{{generation.id}}</option>
+				}
 			</select>
 		</div>
 	</div>

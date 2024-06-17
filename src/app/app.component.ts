@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { PokemonComponent } from './pokemon/pokemon.component';
 import { PokemonSearchComponent } from './pokemon-search/pokemon-search.component';
 import { PokemonService } from './pokemon.service';
@@ -9,7 +9,14 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, PokemonComponent, PokemonSearchComponent, AdivinarPokemonComponent, SidebarComponent],
+  imports: [
+		RouterOutlet,
+		PokemonComponent,
+		PokemonSearchComponent,
+		AdivinarPokemonComponent,
+		SidebarComponent,
+		RouterModule,
+	],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

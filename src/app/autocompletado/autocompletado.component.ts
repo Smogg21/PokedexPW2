@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './autocompletado.component.css'
 })
 export class AutocompletadoComponent {
-	pokemonName: any;
+	@Input() pokemonName: any;
 	pokemonList: string[] = nombresPokemon;
 	filteredNames: string[] = [];
 	selectedName: string = '';

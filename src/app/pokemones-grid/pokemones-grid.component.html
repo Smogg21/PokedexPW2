@@ -1,0 +1,36 @@
+<div class="pokemon-container">
+	@for (pokemon of pokemons; track pokemon; let index = $index) {
+		<div class="flip-card">
+			<div class="card-container">
+				<div class="pokemon-block">
+					<div class="img-container">
+						<img [src]="pokemon.sprites.mainImg" alt="{{ pokemon.name }}">
+					</div>
+					<p>#{{ pokemon.id.toString().padStart(3, '0') }}</p>
+					<p class="name">{{ pokemon.name }}</p>
+				</div>
+				<div class="pokemon-block-back">
+					<div class="stats-container">
+						@for (stat of pokemon.stats.slice(0, 3); track stat; let index = $index) {
+							<div class="stat-container">
+								<p>{{ stat.name }}</p>
+								<div class="progress">
+									<div class="progress-bar" [style.width]="(stat.baseStat / 2) + '%'">
+										{{ stat.baseStat }}
+									</div>
+								</div>
+							</div>
+						}
+					</div>
+				</div>
+			</div>
+		</div>
+	}
+</div>
+@if (loading) {
+	<div id="spinner">Loading...</div>
+}
+<div class="controls">
+  <button (click)="previousPage()" [disabled]="loading || offset === 1">Previous</button>
+  <button (click)="nextPage()" [disabled]="loading">Next</button>
+</div>

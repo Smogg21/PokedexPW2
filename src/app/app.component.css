@@ -1,0 +1,8 @@
+.navbar .routes {
+	display: flex;
+	align-items: center;
+}
+
+.navbar .routes .route-link {
+	margin: 0 20px;
+}
