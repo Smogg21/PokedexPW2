@@ -1,35 +1,47 @@
 @if (pokemon) {
-  <div class="pkmContainer pokemon-details">
+<div class="pkmContainer pokemon-details" [ngClass]="getPokemonTypeClass(pokemon.types[0].type.name)">
   <h2>{{ pokemon.name | uppercase }}</h2>
   <div class="img-container">
-      <img src="{{ pokemon.sprites.front_default }}" alt="{{ pokemon.name }}">
-      <img src="{{ pokemon.sprites.back_default }}" alt="{{ pokemon.name }}">
+    <img src="{{ pokemon.sprites.front_default }}" alt="{{ pokemon.name }}" />
+    <img src="{{ pokemon.sprites.back_default }}" alt="{{ pokemon.name }}" />
   </div>
-  <div class="info">
-      <table>
-          <tr>
-              <th>ID</th>
-              <th>Altura</th>
-              <th>Peso</th>
-          </tr>
-          <tr>
-              <td>#{{ pokemon.id }}</td>
-              <td>{{ pokemon.height }} decímetros</td>
-              <td>{{ pokemon.weight }} hectogramos</td>
-          </tr>
-      </table>
-  
-      <h3>Tipo(s)</h3>
-      <small>{{ pokemon.types[0].type.name }}</small>
-      @if ( pokemon.types.length > 1 ) {
-        <small>{{ pokemon.types[1].type.name }}</small>
-      }
-     
-      <br>
-      <audio #audioElement class="audio">
-          <source [src]="pokemon.cries.legacy ? pokemon.cries.legacy : pokemon.cries.latest" type="audio/ogg">
-      </audio>
+  <div  class="info">
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Altura</th>
+        <th>Peso</th>
+      </tr>
+      <tr>
+        <td>#{{ pokemon.id }}</td>
+        <td>{{ pokemon.height /10}} metros</td>
+        <td>{{ pokemon.weight /10}} kilogramos</td>
+      </tr>
+    </table>
+
+    <h3>Tipo(s)</h3>
+    <h4>{{ pokemon.types[0].type.name }}</h4>
+    @if ( pokemon.types.length > 1 ) {
+    <h4>{{ pokemon.types[1].type.name }}</h4>
+    }
+    <br />
+    <button (click)="previousPokemon()" class="pkmComponentBtn">
+      Anterior Pokemon
+    </button>
+    <button (click)="nextPokemon()" class="pkmComponentBtn">
+      Siguiente Pokemon
+    </button>
+
+    <br />
+    <audio #audioElement class="audio">
+      <source
+        [src]="
+          pokemon.cries.legacy ? pokemon.cries.legacy : pokemon.cries.latest
+        "
+        type="audio/ogg"
+      />
+    </audio>
   </div>
-  </div>
-  
+</div>
+
 }

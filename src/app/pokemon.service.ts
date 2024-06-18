@@ -45,7 +45,10 @@ export class PokemonService {
     	const url = `${this.apiUrl}/pokemon/${pokemonName.toLowerCase()}`;
     	return this.http.get<any>(url);
 	}
-
+	getPokemonByNumber(id: number): Observable<any> {
+		const url = `${this.apiUrl}/pokemon/${id}`;
+		return this.http.get<any>(url);
+	}
 	getSinglePokemon(pokemonName: string, generation: string): Observable<any> {
     	const url = `${this.apiUrl}/pokemon/${pokemonName.toLowerCase()}`;
     	return this.http.get<any>(url).pipe(
@@ -76,7 +79,8 @@ export class PokemonService {
 					name: data.name,
 					id: data.id,
 					sprites: sprites,
-					stats: stats
+					stats: stats,
+					types: data.types
 				};
 			})
 		);
