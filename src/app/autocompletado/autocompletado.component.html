@@ -1,9 +1,24 @@
-<input type="text" autocomplete="off"  #pkmNameInput name="pkmName" placeholder="Pikachu"  id="search" [(ngModel)]="selectedName"  (blur)="onInputBlur()" (input)="filterPokemonNames($event)" placeholder="Pikachu" id="pkmName">
-<button class="search" type="submit" value="Buscar" id="search"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></button>
+<input
+  type="text"
+  autocomplete="off"
+  #pkmNameInput
+  name="pkmName"
+  placeholder="Pikachu"
+  id="search"
+  [(ngModel)]="selectedName"
+  (blur)="onInputBlur()"
+  (input)="filterPokemonNames($event)"
+  placeholder="Pikachu"
+  id="pkmName"
+/>
+<button class="search" type="submit" value="Buscar" id="search">
+  <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+</button>
+@if (filteredNames.length > 0){ }
 <div class="autocomplete-items">
-	@for (name of filteredNames; track name) {
-	  <div (click)="selectPokemon(name)">
-		{{ name }}
-		</div>
-	}
+  @for (name of filteredNames; track name) {
+  <div (click)="selectPokemon(name)" class="autocomplete-item">
+    {{ name }}
+  </div>
+  }
 </div>

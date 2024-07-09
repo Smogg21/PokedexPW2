@@ -1,39 +1,40 @@
 .pkmContainer {
-	text-align: center;
-    display: flex;
-    flex-direction: column;
-  h2{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  h2 {
     font-size: 40px;
     font-weight: bold;
   }
-  h4{
+  h4 {
     font-size: 25px;
   }
-
 }
-table{
+table {
   width: 100%;
   min-height: 150px;
 }
 
-.img-container{
+.img-container {
   width: 100%;
 }
-img{
+img {
   width: 40%;
 }
 
-.pkmComponentBtn{
+.pkmComponentBtn {
   appearance: none;
-  background-color: #FAFBFC;
+  background-color: #fafbfc;
   border: 1px solid rgba(27, 31, 35, 0.15);
   border-radius: 6px;
-  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0,
+    rgba(255, 255, 255, 0.25) 0 1px 0 inset;
   box-sizing: border-box;
-  color: #24292E;
+  color: #24292e;
   cursor: pointer;
   display: inline-block;
-  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
@@ -47,251 +48,304 @@ img{
   vertical-align: middle;
   white-space: nowrap;
   word-wrap: break-word;
+  z-index: -1;
 }
 
 .pkmComponentBtn:hover {
-  background-color: #F3F4F6;
+  background-color: #f3f4f6;
   text-decoration: none;
   transition-duration: 0.1s;
 }
 
-
 .pkmComponentBtn:active {
-  background-color: #EDEFF2;
+  background-color: #edeff2;
   box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
   transition: none 0s;
 }
 
-
-
-.fire-type{
-  table, th, td{
+.fire-type {
+  table,
+  th,
+  td {
     border-style: solid;
     border-color: black;
   }
-  h2, h4{
+  h2,
+  h4 {
     color: #eb893d;
   }
-  table{
+  table {
     background-color: #eb893d;
   }
-  
-
 }
-.water-type{
-  table, th, td{
+.water-type {
+  table,
+  th,
+  td {
     border-style: solid;
     border-color: black;
   }
-  h2, h4{
+  h2,
+  h4 {
     color: #6d8dec;
   }
 
-  table{
+  table {
     background-color: #6d8dec;
   }
 }
-.grass-type{
-  table, th, td{
+.grass-type {
+  table,
+  th,
+  td {
     border-style: solid;
     border-color: black;
   }
-  h2, h4{
+  h2,
+  h4 {
     color: #7ec65b;
   }
-  table{
+  table {
     background-color: #7ec65b;
   }
 }
-.electric-type{
-  table, th, td{
+.electric-type {
+  table,
+  th,
+  td {
     border-style: solid;
     border-color: black;
   }
-  h2, h4{
+  h2,
+  h4 {
     color: #f5d349;
   }
-  table{
+  table {
     background-color: #f5d349;
   }
 }
-.normal-type{
-  table, th, td{
+.normal-type {
+  table,
+  th,
+  td {
     border-style: solid;
     border-color: black;
   }
-  h2, h4{
+  h2,
+  h4 {
     color: #a8a87b;
   }
-  table{
+  table {
     background-color: #a8a87b;
   }
 }
-.ice-type{
-  table, th, td{
+.ice-type {
+  table,
+  th,
+  td {
     border-style: solid;
     border-color: black;
   }
-  h2, h4{
+  h2,
+  h4 {
     color: #9dd5d7;
   }
-  table{
+  table {
     background-color: #9dd5d7;
   }
 }
-.ground-type{
-  table, th, td{
+.ground-type {
+  table,
+  th,
+  td {
     border-style: solid;
     border-color: black;
   }
-  h2, h4{
+  h2,
+  h4 {
     color: #dec370;
   }
-  table{
+  table {
     background-color: #dec370;
   }
 }
-.flying-type{
-  table, th, td{
+.flying-type {
+  table,
+  th,
+  td {
     border-style: solid;
     border-color: black;
   }
-  h2, h4{
+  h2,
+  h4 {
     color: #a890ec;
   }
-  table{
+  table {
     background-color: #a890ec;
   }
 }
-.poison-type{
-  table, th, td{
+.poison-type {
+  table,
+  th,
+  td {
     border-style: solid;
     border-color: black;
   }
-  h2, h4{
+  h2,
+  h4 {
     color: #9d479d;
   }
-  table{
+  table {
     background-color: #9d479d;
   }
 }
-.bug-type{
-  table, th, td{
+.bug-type {
+  table,
+  th,
+  td {
     border-style: solid;
     border-color: black;
   }
-  h2, h4{
+  h2,
+  h4 {
     color: #a8b838;
   }
-  table{
+  table {
     background-color: #a8b838;
   }
 }
-.fighting-type{
-  table, th, td{
+.fighting-type {
+  table,
+  th,
+  td {
     border-style: solid;
     border-color: black;
   }
-  h2, h4{
+  h2,
+  h4 {
     color: #bb422d;
   }
-  table{
+  table {
     background-color: #bb422d;
   }
 }
-.psychic-type{
-  table, th, td{
+.psychic-type {
+  table,
+  th,
+  td {
     border-style: solid;
     border-color: black;
   }
-  h2, h4{
+  h2,
+  h4 {
     color: #f26888;
   }
-  table{
+  table {
     background-color: #f26888;
   }
 }
-.rock-type{
-  table, th, td{
+.rock-type {
+  table,
+  th,
+  td {
     border-style: solid;
     border-color: black;
   }
-  h2, h4{
+  h2,
+  h4 {
     color: #b6a244;
   }
-  table{
+  table {
     background-color: #b6a244;
   }
 }
-.ghost-type{
-  table, th, td{
+.ghost-type {
+  table,
+  th,
+  td {
     border-style: solid;
     border-color: black;
   }
-  h2, h4{
+  h2,
+  h4 {
     color: #6f5895;
   }
-  table{
+  table {
     background-color: #6f5895;
   }
 }
-.dark-type{
-  table, th, td{
+.dark-type {
+  table,
+  th,
+  td {
     border-style: solid;
     border-color: black;
   }
-  h2, h4{
+  h2,
+  h4 {
     color: #6f5a49;
   }
-  table{
+  table {
     background-color: #6f5a49;
   }
 }
-.dragon-type{
-  table, th, td{
+.dragon-type {
+  table,
+  th,
+  td {
     border-style: solid;
     border-color: black;
   }
-  h2, h4{
+  h2,
+  h4 {
     color: #7035f2;
   }
-  table{
+  table {
     background-color: #7035f2;
   }
 }
-.steel-type{
-  table, th, td{
+.steel-type {
+  table,
+  th,
+  td {
     border-style: solid;
     border-color: black;
   }
-  h2, h4{
+  h2,
+  h4 {
     color: #b8b8cf;
   }
-  table{
+  table {
     background-color: #b8b8cf;
   }
 }
-.fairy-type{
-  table, th, td{
+.fairy-type {
+  table,
+  th,
+  td {
     border-style: solid;
     border-color: black;
   }
-  h2, h4{
+  h2,
+  h4 {
     color: #edb9bc;
   }
-  table{
+  table {
     background-color: #edb9bc;
   }
 }
-.default-type{
-  table, th, td{
+.default-type {
+  table,
+  th,
+  td {
     border-style: solid;
     border-color: black;
   }
-  h2, h4{
+  h2,
+  h4 {
     color: #efe7e4;
   }
-  table{
+  table {
     background-color: #efe7e4;
   }
 }

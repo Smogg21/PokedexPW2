@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { RouterModule, RouterOutlet } from '@angular/router';
-import { PokemonComponent } from './pokemon/pokemon.component';
-import { PokemonSearchComponent } from './pokemon-search/pokemon-search.component';
-import { PokemonService } from './pokemon.service';
-import { AdivinarPokemonComponent } from './adivinar-pokemon/adivinar-pokemon.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { RouterModule, RouterOutlet, Routes } from '@angular/router';
+import { PokemonComponent } from '../pokemon/pokemon.component';
+import { PokemonSearchComponent } from '../pokemon-search/pokemon-search.component';
+import { PokemonService } from '../pokemon.service';
+import { AdivinarPokemonComponent } from '../adivinar-pokemon/adivinar-pokemon.component';
+import { SidebarComponent } from '../sidebar/sidebar.component';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-pkdex-route-component',
   standalone: true,
   imports: [
     RouterOutlet,
@@ -17,10 +17,10 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     SidebarComponent,
     RouterModule,
   ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  templateUrl: './pkdex-route-component.component.html',
+  styleUrl: './pkdex-route-component.component.css',
 })
-export class AppComponent {
+export class PkdexRouteComponentComponent {
   pokemon: any;
   loading: boolean = false;
 

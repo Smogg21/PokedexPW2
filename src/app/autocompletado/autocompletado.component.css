@@ -1,4 +1,15 @@
 .autocomplete-items {
-	background-color: white;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  gap: 10px;
+  z-index: 500;
+  width: 50%;
+  border-radius: 12px;
+  justify-content: center;
+  margin: auto;
+}
+.autocomplete-item {
+  font-size: 14px;
 }
