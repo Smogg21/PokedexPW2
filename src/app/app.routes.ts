@@ -4,8 +4,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { JuegosComponent } from './juegos/juegos.component';
 import { PokemonComponent } from './pokemon/pokemon.component';
 import { PkdexRouteComponentComponent } from './pkdex-route-component/pkdex-route-component.component';
+import { InicioComponentComponent } from './inicio-component/inicio-component.component';
 
 export const routes: Routes = [
+  { path: '', component: InicioComponentComponent },
   { path: 'pokedex', component: PkdexRouteComponentComponent },
   { path: 'cartas', component: PokemonesGridComponent },
   { path: 'juegos', component: JuegosComponent },

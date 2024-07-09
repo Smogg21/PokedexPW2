@@ -17,19 +17,6 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.navbar {
-  z-index: 100;
-  top: 0;
-  left: 0;
-  position: fixed;
-  width: 100%;
-  height: 100px;
-  background: white;
-  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.518);
-  display: flex;
-  justify-content: space-evenly;
-}
-
 .sidebar_filter {
   height: 100%;
   width: 0; /*cambiar con js*/
