@@ -4,6 +4,8 @@ import {
   Input,
   ViewChild,
   ElementRef,
+  OnChanges,
+  SimpleChanges,
   AfterViewInit,
 } from '@angular/core';
 import { PokemonService } from '../pokemon.service';
@@ -15,23 +17,44 @@ import { PokemonService } from '../pokemon.service';
   standalone: true,
   imports: [CommonModule],
 })
-export class PokemonComponent {
+export class PokemonComponent implements OnChanges, AfterViewInit {
   @Input() pokemon: any;
   @ViewChild('audioElement') audioElement!: ElementRef<HTMLAudioElement>;
+  pokemonLoaded = false;
 
   constructor(private pokemonService: PokemonService) {}
 
-  playAudio(): void {
-    if (this.audioElement && this.audioElement.nativeElement) {
-      this.audioElement.nativeElement.volume = 0.1;
-      this.audioElement.nativeElement.play();
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['pokemon']) {
+      this.pokemonLoaded = false;
+      this.updateAudioSource();
     }
   }
 
-  ngOnChanges(): void {
-    if (this.audioElement && this.audioElement.nativeElement) {
+  ngAfterViewInit(): void {
+    this.updateAudioSource();
+  }
+
+  updateAudioSource(): void {
+    if (this.pokemon && this.audioElement && this.audioElement.nativeElement) {
+      this.audioElement.nativeElement.src =
+        this.pokemon.cries.legacy || this.pokemon.cries.latest;
       this.audioElement.nativeElement.load();
+      this.pokemonLoaded = true;
       this.playAudio();
+    }
+  }
+
+  playAudio(): void {
+    if (
+      this.pokemonLoaded &&
+      this.audioElement &&
+      this.audioElement.nativeElement
+    ) {
+      this.audioElement.nativeElement.volume = 0.1;
+      this.audioElement.nativeElement
+        .play()
+        .catch((error) => console.error('Error playing audio:', error));
     }
   }
 
@@ -40,6 +63,7 @@ export class PokemonComponent {
       .getPokemonByNumber(this.pokemon.id - 1)
       .subscribe((pokemon) => {
         this.pokemon = pokemon;
+        this.updateAudioSource();
       });
   }
 
@@ -48,6 +72,7 @@ export class PokemonComponent {
       .getPokemonByNumber(this.pokemon.id + 1)
       .subscribe((pokemon) => {
         this.pokemon = pokemon;
+        this.updateAudioSource();
       });
   }
 
@@ -89,10 +114,12 @@ export class PokemonComponent {
         return 'steel-type';
       case 'fairy':
         return 'fairy-type';
-
-      // Add more cases for other types
       default:
         return 'default-type';
     }
+  }
+
+  playPokemonCry() {
+    this.playAudio();
   }
 }

@@ -1,15 +1,14 @@
-@if (pokemon) {
 <div
-  class="pkmContainer pokemon-details"
+  *ngIf="pokemon"
+  class="pkmContainer"
   [ngClass]="getPokemonTypeClass(pokemon.types[0].type.name)"
 >
-  <h1>Pokemon del día!</h1>
   <h2>{{ pokemon.name | uppercase }}</h2>
   <div class="img-container">
-    <img src="{{ pokemon.sprites.front_default }}" alt="{{ pokemon.name }}" />
+    <img [src]="pokemon.sprites.front_default" [alt]="pokemon.name" />
     <img
-      src="{{ pokemon.sprites.back_default || pokemon.sprites.front_shiny }}"
-      alt="{{ pokemon.name }}"
+      [src]="pokemon.sprites.back_default || pokemon.sprites.front_shiny"
+      [alt]="pokemon.name"
     />
   </div>
   <div class="info">
@@ -18,20 +17,49 @@
         <th>ID</th>
         <th>Altura</th>
         <th>Peso</th>
+        <th>Experiencia base</th>
       </tr>
       <tr>
         <td>#{{ pokemon.id }}</td>
         <td>{{ pokemon.height / 10 }} metros</td>
         <td>{{ pokemon.weight / 10 }} kilogramos</td>
+        <td>{{ pokemon.base_experience }}</td>
       </tr>
     </table>
 
     <h3>Tipo(s)</h3>
-    <h4>{{ pokemon.types[0].type.name }}</h4>
-    @if ( pokemon.types.length > 1 ) {
-    <h4>{{ pokemon.types[1].type.name }}</h4>
-    }
-    <br />
+    <div class="types">
+      <span
+        *ngFor="let type of pokemon.types"
+        class="type-badge"
+        [ngClass]="'type-' + type.type.name.toLowerCase()"
+      >
+        {{ type.type.name | titlecase }}
+      </span>
+    </div>
+
+    <h3>Habilidades</h3>
+    <ul>
+      <li *ngFor="let ability of pokemon.abilities">
+        {{ ability.ability.name | titlecase }}
+        <span *ngIf="ability.is_hidden">(Habilidad oculta)</span>
+      </li>
+    </ul>
+
+    <h3>Estadísticas base</h3>
+    <ul>
+      <li *ngFor="let stat of pokemon.stats">
+        {{ stat.stat.name | titlecase }}: {{ stat.base_stat }}
+      </li>
+    </ul>
+
+    <h3>Movimientos destacados</h3>
+    <ul>
+      <li *ngFor="let move of pokemon.moves.slice(0, 5)">
+        {{ move.move.name | titlecase }}
+      </li>
+    </ul>
+
     <button (click)="previousPokemon()" class="pkmComponentBtn">
       Anterior Pokemon
     </button>
@@ -40,15 +68,14 @@
     </button>
 
     <br />
-    <audio #audioElement class="audio">
+    <audio #audioElement>
       <source
-        [src]="
-          pokemon.cries.legacy ? pokemon.cries.legacy : pokemon.cries.latest
-        "
+        [src]="pokemon.cries.legacy || pokemon.cries.latest"
         type="audio/ogg"
       />
     </audio>
+    <button (click)="playPokemonCry()" class="pkmComponentBtn">
+      Escuchar grito
+    </button>
   </div>
 </div>
-
-}
