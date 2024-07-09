@@ -9,7 +9,9 @@
   border-radius: 12px;
   justify-content: center;
   margin: auto;
+  z-index: 3;
 }
 .autocomplete-item {
   font-size: 14px;
+  z-index: 4;
 }
