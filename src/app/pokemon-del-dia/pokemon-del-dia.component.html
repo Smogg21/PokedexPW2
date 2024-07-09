@@ -1,9 +1,8 @@
-@if (pokemon) {
+@if (!loading && pokemon) {
 <div
   class="pkmContainer pokemon-details"
   [ngClass]="getPokemonTypeClass(pokemon.types[0].type.name)"
 >
-  <h1>Pokemon del día!</h1>
   <h2>{{ pokemon.name | uppercase }}</h2>
   <div class="img-container">
     <img src="{{ pokemon.sprites.front_default }}" alt="{{ pokemon.name }}" />
@@ -32,14 +31,7 @@
     <h4>{{ pokemon.types[1].type.name }}</h4>
     }
     <br />
-    <button (click)="previousPokemon()" class="pkmComponentBtn">
-      Anterior Pokemon
-    </button>
-    <button (click)="nextPokemon()" class="pkmComponentBtn">
-      Siguiente Pokemon
-    </button>
 
-    <br />
     <audio #audioElement class="audio">
       <source
         [src]="
@@ -50,5 +42,6 @@
     </audio>
   </div>
 </div>
-
+} @if(loading){
+<div>Cargando...</div>
 }
