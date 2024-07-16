@@ -13,7 +13,7 @@
 	</div>
 }
 
-@if (isGameOver) {
+@if (isGameOver && !hasWon) {
 	<div>
 		<div class="game-over-screen">
 			<p>Game Over</p>
@@ -23,5 +23,15 @@
 		</div>
 	</div>
 }
+
+@if (hasWon) {
+	<div >
+	<!-- Pantalla de Victoria -->
+	<h2>¡Felicitaciones! ¡Has ganado!</h2>
+	<p>Score: {{ score }}</p>
+	<button (click)="startGame()">Volver a jugar</button>
+	</div>
+}
+
 
 
