@@ -1,0 +1,27 @@
+@if (!isGameOver && !isGameStarted) {
+	<div>
+	<div class="start-screen">
+		<img src="assets/start-background.jpg" alt="Start Background" class="background-image">
+		<button (click)="startGame()">Jugar</button>
+	</div>
+	</div>
+}
+
+@if (isGameStarted && !isGameOver) {
+	<div>
+	<canvas id="gameCanvas" width="800" height="400"></canvas>
+	</div>
+}
+
+@if (isGameOver) {
+	<div>
+		<div class="game-over-screen">
+			<p>Game Over</p>
+			<p>Score: {{score}}</p>
+			<p>Tiempo: {{elapsedTime}}s</p>
+			<button (click)="startGame()">Reiniciar</button>
+		</div>
+	</div>
+}
+
+

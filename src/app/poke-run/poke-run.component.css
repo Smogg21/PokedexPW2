@@ -1,0 +1,26 @@
+canvas {
+  border: 1px solid #000;
+  display: block;
+  margin: 0 auto;
+}
+
+.start-screen, .game-over-screen {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.start-screen .background-image, .game-over-screen .background-image {
+  width: 100%;
+  height: auto;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.game-over-screen p {
+  font-size: 30px;
+  color: black;
+}
