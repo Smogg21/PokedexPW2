@@ -1,0 +1,54 @@
+<div class="adivinar-pokemon-cont container-flex">
+  @if (pokemon) {
+  <h1>¿QUIÉN ES ESTE POKEMÓN?</h1>
+  <h2>{{ tiempo }}</h2>
+  <p>Puntaje: {{ puntaje }}</p>
+  <div class="pokemon-img-container container-flex">
+    <img
+      #pokemonImage
+      id="pokemon-oculto"
+      class="pokemon-oculto"
+      src="{{ pokemon.src }}"
+      alt="{{ pokemon.alt }}"
+    />
+  </div>
+  <div>
+    @for (opcion of opciones; track opcion; let index = $index) {
+    <button
+      class="pkmCardBtn"
+      id="opcion{{ index }}"
+      (click)="elegirRespuesta(opcion)"
+    >
+      {{ opcion }}
+    </button>
+    }
+  </div>
+  <button class="pkmCardBtn rendirse-btn" (click)="rendirse()">Rendirse</button>
+  } @else if (juegoTerminado) {
+  <div class="container-flex">
+    @if (puntaje < 3) {
+    <h1>TU PUNTAJE FUE {{ puntaje }}, ¿INTENTAS NUEVAMENTE?</h1>
+    } @else if (puntaje >= 3 && puntaje < 8) {
+    <h1>¡HAS ACERTADO {{ puntaje }}, BIEN HECHO!</h1>
+    } @else {
+    <h1>¡WOW, HAS ACERTADO {{ puntaje }}, FELICITACIONES!</h1>
+    }
+    <button class="pkmCardBtn" (click)="comenzarJuego(true)">JUGAR</button>
+  </div>
+  } @else {
+  <div class="container-flex">
+    <h1 class="whosdatpokemon-title">Quien es ese pokemon?</h1>
+    <p>Atrévete a jugar a adivinar el pokemon</p>
+    <p>
+      Mirarás la silueta de un pokemon al azar. ¡Solo tendrás que adivinar a
+      cual pertenece!
+    </p>
+    <img
+      src="../../assets/images/whosDatPokemon.png"
+      alt="Quien es ese pokemon?"
+      class="whosdatpokemon"
+    />
+    <button class="pkmCardBtn" (click)="comenzarJuego(true)">JUGAR</button>
+  </div>
+  }
+</div>

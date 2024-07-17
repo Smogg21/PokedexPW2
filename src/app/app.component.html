@@ -1,0 +1,38 @@
+<main>
+  <app-sidebar></app-sidebar>
+  <div class="navbar">
+    <div class="routes">
+      <div>
+        <img
+          src="../assets/images/title.png"
+          alt="pokemonIcon"
+          class="pokemonIcon"
+        />
+      </div>
+      <div class="route-link">
+        <a routerLink="">Inicio</a>
+      </div>
+      <div class="route-link">
+        <a routerLink="pokedex">Pokedex</a>
+      </div>
+      <div class="route-link">
+        <a routerLink="juegos">Adivinar Pokemon</a>
+      </div>
+      <div class="route-link">
+        <a routerLink="cartas">Cartas</a>
+      </div>
+      <div class="route-link">
+        <a routerLink="pokemonDelDia">Pokemon Del Día</a>
+      </div>
+      <div class="route-link">
+        <a routerLink="pokerunGame">PokeRUN</a>
+      </div>
+      <div class="route-link">
+        <a routerLink="memoryComponent">Memoria</a>
+      </div>
+    </div>
+  </div>
+  <div class="contentContainer">
+    <router-outlet />
+  </div>
+</main>

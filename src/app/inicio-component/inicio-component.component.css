@@ -1,0 +1,8 @@
+.pokedexImg {
+  width: 40%;
+}
+.inicioContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

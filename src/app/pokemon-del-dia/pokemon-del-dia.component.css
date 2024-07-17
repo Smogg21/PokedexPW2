@@ -1,0 +1,236 @@
+.pkmContainer {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.pkmContainer h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.pkmContainer h2 {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.pkmContainer h3 {
+  font-size: 24px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.pkmContainer h4 {
+  font-size: 25px;
+  margin: 5px 0;
+}
+
+.img-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.img-container img {
+  width: 50%;
+
+  height: 300px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th,
+td {
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.types {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.type-badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-weight: bold;
+  text-transform: capitalize;
+  color: white;
+  background-color: #777;
+  border: 1px solid whitesmoke;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+.pkmComponentBtn {
+  appearance: none;
+  background-color: #fafbfc;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0,
+    rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #24292e;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  padding: 6px 16px;
+  position: relative;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  word-wrap: break-word;
+  margin: 5px;
+}
+
+.pkmComponentBtn:hover {
+  background-color: #f3f4f6;
+  text-decoration: none;
+  transition-duration: 0.1s;
+}
+
+.pkmComponentBtn:active {
+  background-color: #edeff2;
+  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+  transition: none 0s;
+}
+
+/* Type-specific styles */
+.fire-type {
+  background-color: #eb893d;
+}
+.water-type {
+  background-color: #6d8dec;
+}
+.grass-type {
+  background-color: #7ec65b;
+}
+.electric-type {
+  background-color: #f5d349;
+}
+.normal-type {
+  background-color: #a8a87b;
+}
+.ice-type {
+  background-color: #9dd5d7;
+}
+.ground-type {
+  background-color: #dec370;
+}
+.flying-type {
+  background-color: #a890ec;
+}
+.poison-type {
+  background-color: #9d479d;
+}
+.bug-type {
+  background-color: #a8b838;
+}
+.fighting-type {
+  background-color: #bb422d;
+}
+.psychic-type {
+  background-color: #f26888;
+}
+.rock-type {
+  background-color: #b6a244;
+}
+.ghost-type {
+  background-color: #6f5895;
+}
+.dark-type {
+  background-color: #6f5a49;
+}
+.dragon-type {
+  background-color: #7035f2;
+}
+.steel-type {
+  background-color: #b8b8cf;
+}
+.fairy-type {
+  background-color: #edb9bc;
+}
+
+/* Type badge styles */
+.type-fire {
+  background-color: #eb893d;
+}
+.type-water {
+  background-color: #6d8dec;
+}
+.type-grass {
+  background-color: #7ec65b;
+}
+.type-electric {
+  background-color: #f5d349;
+}
+.type-normal {
+  background-color: #a8a87b;
+}
+.type-ice {
+  background-color: #9dd5d7;
+}
+.type-ground {
+  background-color: #dec370;
+}
+.type-flying {
+  background-color: #a890ec;
+}
+.type-poison {
+  background-color: #9d479d;
+}
+.type-bug {
+  background-color: #a8b838;
+}
+.type-fighting {
+  background-color: #bb422d;
+}
+.type-psychic {
+  background-color: #f26888;
+}
+.type-rock {
+  background-color: #b6a244;
+}
+.type-ghost {
+  background-color: #6f5895;
+}
+.type-dark {
+  background-color: #6f5a49;
+}
+.type-dragon {
+  background-color: #7035f2;
+}
+.type-steel {
+  background-color: #b8b8cf;
+}
+.type-fairy {
+  background-color: #edb9bc;
+}

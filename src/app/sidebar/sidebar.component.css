@@ -1,0 +1,9 @@
+.mostrar-sidebar {
+	width: 300px;
+	display: block;
+}
+
+.ocultar-sidebar {
+	width: 0px;
+	display: none;
+}

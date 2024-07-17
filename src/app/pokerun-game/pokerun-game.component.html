@@ -1,0 +1,29 @@
+@if (!isGameOver && !isGameStarted) {
+    <div class="game-container">
+        <img src="../assets/images/pokeRun_BG_Start.png" alt="" class="game_BG_Start">
+        <div class="container">
+            <button class="startBtn" (click)="startGame()"><h2>COMENZAR</h2></button>
+        </div>
+    </div>
+}
+
+@if (isGameStarted && !isGameOver) {
+	<div>
+	<canvas id="gameCanvas" width="800" height="400"></canvas>
+	</div>
+	<img src="../assets/images/pokeRun_BG.png" alt="" class="game_BG">
+}
+
+@if (isGameOver) {
+	<div>
+		<div class="game-over-screen">
+			<img src="../assets/images/gameOver.png" alt="" class="gameOver">
+            <div class="stats">
+                <p>Score: {{score}}</p>
+                <p>Tiempo: {{elapsedTime}}s</p>
+            </div>
+			<button class="restartBtn" (click)="startGame()"><h2>Reiniciar</h2></button>
+		</div>
+        <img src="../assets/images/pokeRun_BG.png" alt="" class="game_BG">
+	</div>
+}

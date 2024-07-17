@@ -1,0 +1,26 @@
+<div class="btnFilter" id="btnFilter">
+		<button><i class="fa-solid fa-filter" (click)="openSidebar()"></i></button>
+	</div>
+	<div class="sidebar_filter ocultar-sidebar mostrar-sidebar" #sidebar id="sidebar">
+		<i class="fa-solid fa-xmark" id="btnClose" (click)="closeSidebar()"></i>
+		<div class="filter_text">
+			<p>Tipos: </p>
+			<select name="pkmnType" class="pkmnType" (change)="onTypeChange($event)">
+				@for (type of pokemonTypes; track type;) {
+					<option value={{type.id}} [selected]="type.id === -1" >{{type.name}}</option>
+				}
+			</select>
+			<p>Debilidades: </p>
+			<select name="pkmnWeak" class="pkmnWeak" (change)="onWeaknessChange($event)">
+				@for (type of pokemonTypesWeak; track type;) {
+					<option value={{type.id}} [selected]="type.id === -1" >{{type.name}}</option>
+				}
+			</select>
+			<p>Generación: </p>
+			<select name="pkmnGeneration" class="pkmnType" (change)="onGenerationChange($event)">
+				@for (generation of spriteGenerations; track generation;) {
+					<option value={{generation.value}} [selected]="generation.id === 'NA'" >{{generation.id}}</option>
+				}
+			</select>
+		</div>
+	</div>
