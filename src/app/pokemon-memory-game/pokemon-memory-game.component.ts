@@ -148,7 +148,7 @@ export class PokemonMemoryGameComponent implements OnInit {
   generatePokemonIds(): number[] {
     const ids: number[] = [];
     while (ids.length < 8) {
-      const id = Math.floor(Math.random() * 151) + 1;
+      const id = Math.floor(Math.random() * 900) + 1;
       if (!ids.includes(id)) {
         ids.push(id, id);
       }
