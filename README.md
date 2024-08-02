@@ -1,7 +1,21 @@
 # PokedexPW2
 Este proyecto fue realizado por los alumnos Salvatore Pazzaglia, David Ildefonso, Sebastian Anlas y Alejantro Vento para el curso de Programación web 2, utilizando Angular como framework de trabajo.
 El proyecto cuenta con las siguientes vistas.
-![Logo](showImg/img1.jpg)
+![Landing](showImg/img1.jpg)
+![Pokedex1](showImg/img2.jpg)
+![Pokedex2](showImg/img3.jpg)
+![Pokedex3](showImg/img4.jpg)
+![Pokedex4](showImg/img5.jpg)
+![Pokedex5](showImg/img6.jpg)
+![Pokedex6](showImg/img7.jpg)
+![Adivinar1](showImg/img8.jpg)
+![Adivinar2](showImg/img9.jpg)
+![Cartas1](showImg/img10.jpg)
+![Cartas2](showImg/img11.jpg)
+![PokeRun1](showImg/img12.jpg)
+![PokeRun2](showImg/img13.jpg)
+![PokeRun3](showImg/img14.jpg)
+![Memoria](showImg/img15.jpg)
 
 ## Developers:
 
